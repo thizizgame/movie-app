@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { FiFilm } from "react-icons/fi";
 import { IoChevronDownCircle } from "react-icons/io5";
 import { FaCircleChevronRight } from "react-icons/fa6";
+import { Input } from "@/components/ui/input"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -68,7 +69,7 @@ export function Header() {
 
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <input type="search" placeholder="Search" className="border-1"></input>
+                <Input placeholder="Search"/>
             </div>
             <ModeToggle />
 

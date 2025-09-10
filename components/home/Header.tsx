@@ -1,8 +1,6 @@
 import { ModeToggle } from "@/components/home/ThemeToggler";
 import { Button } from "../ui/button";
 import { FiFilm } from "react-icons/fi";
-import { IoIosArrowDropdown } from "react-icons/io";
-import { FaAngleRight } from "react-icons/fa6";
 import { Input } from "@/components/ui/input"
 import {
     DropdownMenu,
@@ -10,18 +8,23 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import Link from "next/link";
 export function Header() {
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
-            <div className="flex gap-1 items-center text-indigo-700">
+            <div className=" text-indigo-700">
+                <Link className="flex gap-1 items-center" href="/">
                 <FiFilm color="#4338CA" />
                 <p className="font-semibold">Movie Z</p>
+                </Link>
+                
             </div>
             <div className="flex gap-5">
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" size="icon" className="w-[97px]">
-                            <IoIosArrowDropdown />
+                            <ChevronDown />
                             Genre
                         </Button>
                     </DropdownMenuTrigger>
@@ -32,44 +35,47 @@ export function Header() {
                         </div>
                         
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Action
-                            <FaAngleRight />
+                           <Link href="/genre">Action</Link> 
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Adventure
-                            <FaAngleRight />
+                            
+                            <Link href="/genre">Adventure</Link>
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Animation
-                            <FaAngleRight />
+                            <Link href="/genre">Animation</Link>
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Biography
-                            <FaAngleRight />
+                           <Link href="/genre"> Biography</Link>
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Comedy
-                            <FaAngleRight />
+                            <Link href="/genre">Comedy</Link>
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Crime
-                            <FaAngleRight />
+                            <Link href="/genre">Crime</Link> 
+                            
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Documentary
-                            <FaAngleRight />
+                            <Link href="/genre">Documentary</Link> 
+                            
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Drama
-                            <FaAngleRight />
+                            <Link href="/genre">Drama</Link> 
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Family
-                            <FaAngleRight />
+                            <Link href="/genre">Family</Link> 
+                            <ChevronRight />
                         </DropdownMenuItem>
                         <DropdownMenuItem className="border-1 rounded-2xl">
-                            Fantasy
-                            <FaAngleRight />
+                            <Link href="/genre">Fantasy</Link> 
+                            <ChevronRight />
                         </DropdownMenuItem>
 
                     </DropdownMenuContent>

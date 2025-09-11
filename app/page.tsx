@@ -1,5 +1,6 @@
 import { MovieCarousel } from "@/components/home/MovieCarousel";
 import { MoviesContainer } from "@/components/home/moviesContainer";
+import { MovieCard } from "@/components/home/MovieCard";
 import { movieResponseType } from "@/types";
 import { getMoviesList } from "@/utils/get-data";
 
@@ -15,7 +16,7 @@ export default async function Home() {
   return (
     <div className="w-[1250px] m-auto">
      
-      {/* <MovieCarousel movies={nowPlayingMovies.results} /> */}
+      <MovieCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer movies={upcomingMovies.results} title="Upcoming" />
       <MoviesContainer movies={popularMovies.results} title="Popular" />
       <MoviesContainer movies={topRatedMovies.results} title="Top Rated" />

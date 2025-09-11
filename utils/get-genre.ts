@@ -1,6 +1,6 @@
-export const getMoviesList = async (listName: string) => {
+export const getGenreList = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${listName}?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/genre/movie/list?language=en`,
     {
       method: "GET",
       headers: {

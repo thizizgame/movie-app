@@ -4,38 +4,18 @@ import { FiFilm } from "react-icons/fi";
 import { Input } from "@/components/ui/input"
 import {
     DropdownMenu,
-    DropdownMenuContent,
     DropdownMenuItem,
+    DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { getGenreList } from "@/utils/get-genre";
+import { genreResponsiveType } from "@/types";
 export async function Header() {
-
-    type genreType = {
-        id: number;
-        name: string;
-    }
-    type genreResponseType = {
-        page: number;
-        totalPages: number;
-        results: genreType[];
-    };
-    const getGenreMovies = async () => {
-        const res = await fetch(
-            "https://api.themoviedb.org/3/genre/movie/list?language=en",
-            {
-                method: "GET",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${process.env.TMDB_ACCESS_KEY}`,
-                },
-            }
-        );
-        const data = await res.json();
-        return data;
-    };
-    const genreMovies: genreResponseType = await getGenreMovies();
+   
+    const genreList: genreResponsiveType = await getGenreList();
+    console.log(genreList);
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
             <div className=" text-indigo-700">
@@ -58,16 +38,15 @@ export async function Header() {
                             <h1 className="text-2xl mb-2" >Genres</h1>
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>
                         </div>
-{/* {
-    genreMovies.results.map((movie) => (
-        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">{movie.name}</Link>
+{
+    genreList.genres.map((g) => (
+        <DropdownMenuItem key={g.id} className="border-1 rounded-2xl">
+                            <Link href={'/genre/${g.id}'}>{g.name}</Link>
                             <ChevronRight />
                         </DropdownMenuItem>
     ) ) 
-} */}
-                       
-
+}
+                
 
                     </DropdownMenuContent>
                 </DropdownMenu>

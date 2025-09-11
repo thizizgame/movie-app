@@ -7,6 +7,7 @@ type MoviesContainerProps = {
 };
 
 export const MoviesContainer = ({ movies, title }: MoviesContainerProps) => {
+   
   return (
     <div>
       <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>

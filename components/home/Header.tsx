@@ -10,15 +10,40 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
-export function Header() {
+export async function Header() {
+
+    type genreType = {
+        id: number;
+        name: string;
+    }
+    type genreResponseType = {
+        page: number;
+        totalPages: number;
+        results: genreType[];
+    };
+    const getGenreMovies = async () => {
+        const res = await fetch(
+            "https://api.themoviedb.org/3/genre/movie/list?language=en",
+            {
+                method: "GET",
+                headers: {
+                    accept: "application/json",
+                    Authorization: `Bearer ${process.env.TMDB_ACCESS_KEY}`,
+                },
+            }
+        );
+        const data = await res.json();
+        return data;
+    };
+    const genreMovies: genreResponseType = await getGenreMovies();
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
             <div className=" text-indigo-700">
                 <Link className="flex gap-1 items-center" href="/">
-                <FiFilm color="#4338CA" />
-                <p className="font-semibold">Movie Z</p>
+                    <FiFilm color="#4338CA" />
+                    <p className="font-semibold">Movie Z</p>
                 </Link>
-                
+
             </div>
             <div className="flex gap-5">
                 <DropdownMenu>
@@ -33,50 +58,16 @@ export function Header() {
                             <h1 className="text-2xl mb-2" >Genres</h1>
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>
                         </div>
-                        
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                           <Link href="/genre">Action</Link> 
+{/* {
+    genreMovies.results.map((movie) => (
+        <DropdownMenuItem className="border-1 rounded-2xl">
+                            <Link href="/genre">{movie.name}</Link>
                             <ChevronRight />
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            
-                            <Link href="/genre">Adventure</Link>
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Animation</Link>
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                           <Link href="/genre"> Biography</Link>
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Comedy</Link>
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Crime</Link> 
-                            
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Documentary</Link> 
-                            
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Drama</Link> 
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Family</Link> 
-                            <ChevronRight />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="border-1 rounded-2xl">
-                            <Link href="/genre">Fantasy</Link> 
-                            <ChevronRight />
-                        </DropdownMenuItem>
+    ) ) 
+} */}
+                       
+
 
                     </DropdownMenuContent>
                 </DropdownMenu>

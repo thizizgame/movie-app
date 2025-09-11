@@ -12,14 +12,12 @@ type MovieCardProps = {
     scores: number,
     imageURL: string,
 }
-
-
-export function CardDemo({title, scores, imageURL} : MovieCardProps) {
+export function MovieCard({title, scores, imageURL} : MovieCardProps) {
     return (
 
         <Card className="w-[230px] h-[440px] p-0 rounded-2xl shadow-none border-transparent bg-secondary">
             <CardHeader className="p-0 m-0">
-                <img className="rounded-t-lg h-[340px]" src={imageURL}></img>
+                <img className="rounded-t-lg h-[340px]" src={`https://image.tmdb.org/t/p/w500/${imageURL}`}></img>
                 <CardDescription className="pl-2 pt-2 flex gap-2 items-center">
                  <FaStar color="#FDE047"/>   
                  {scores}
@@ -27,7 +25,5 @@ export function CardDemo({title, scores, imageURL} : MovieCardProps) {
                 <CardTitle className="pl-2">{title}</CardTitle> 
             </CardHeader>
         </Card>
-
-
     )
 }

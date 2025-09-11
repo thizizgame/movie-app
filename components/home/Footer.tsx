@@ -3,7 +3,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FiPhone } from "react-icons/fi";
 export function Footer() {
     return (
-        <div className="bg-indigo-700">
+        <div className="bg-indigo-700 mt-15">
             <div className="flex w-[1360px] text-white p-[40px] m-auto mt-6 justify-between">
                 <div className="flex gap-2">
 

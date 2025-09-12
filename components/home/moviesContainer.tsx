@@ -1,5 +1,6 @@
 import { MovieType } from "@/types";
 import { MovieCard } from "./MovieCard";
+import { Link } from "lucide-react";
 
 type MoviesContainerProps = {
   movies: MovieType[];
@@ -13,12 +14,15 @@ export const MoviesContainer = ({ movies, title }: MoviesContainerProps) => {
       <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>
       <div className="flex gap-6 m-auto flex-wrap ">
         {movies.slice(0, 10).map((movie) => (
+          <Link href="/movie-details">
           <MovieCard
             key={movie.id}
             title={movie.title}
             scores={movie.vote_average}
             imageURL={movie.poster_path}
           />
+          </Link>
+          
         ))}
       </div>
     </div>

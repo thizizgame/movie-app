@@ -11,6 +11,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { MovieType } from "@/types";
+import { FaStar } from "react-icons/fa";
+import { Button } from "../ui/button";
 
 type MovieCarouselProps = {
   movies: MovieType[];
@@ -42,10 +44,19 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
             <CarouselItem key={index}>
               <div className="p-1">
                 <Card>
-                  <CardContent className="h-[600px] p-0 m-0 -mt-6">
-                    <span className="text-4xl font-semibold">
-                      <img className="w-screen h-[screen] object-cover" src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}/>
-                    </span>
+                  <CardContent className="h-[606px] p-0 m-0 relative flex items-center text-white">
+
+                    <div className="w-101 rounded-xl absolute p-5 left-25 flex flex-col gap-3 ">
+                      <h2>Now Playing:</h2>
+                      <span className="text-3xl font-semibold ">
+                        {movie.title}
+                      </span>
+                      <h2 className="flex items-center gap-2"><FaStar color="yellow"/>{movie.vote_average}</h2>
+                      <h2 className="text-[14px]">{movie.overview}</h2>
+                      <Button className="mt-5 w-28">Watch Trailer</Button>
+                    </div>
+
+                    <img className="rounded-xl w-screen h-[654px] bg-center bg-cover" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
                   </CardContent>
                 </Card>
               </div>
@@ -55,16 +66,15 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
         <CarouselPrevious className="left-13" />
         <CarouselNext className="right-13" />
       </Carousel>
-      <div className="flex gap-2 justify-center mt-4">
+      <div className="flex gap-2 justify-center -mt-15 left-[45%] absolute ">
         {Array.from({ length: 10 }).map((_, index) => (
           <div
             onClick={() => {
               api?.scrollTo(index);
             }}
             key={index}
-            className={`rounded-full size-4 ${
-              index + 1 === current ? "bg-gray-300" : "bg-gray-600"
-            }`}
+            className={`rounded-full size-4 ${index + 1 === current ? "bg-gray-300" : "bg-gray-600"
+              }`}
           ></div>
         ))}
       </div>

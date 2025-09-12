@@ -13,7 +13,7 @@ import Link from "next/link";
 import { getGenreList } from "@/utils/get-genre";
 import { genreResponsiveType } from "@/types";
 export async function Header() {
-   
+
     const genreList: genreResponsiveType = await getGenreList();
     console.log(genreList);
     return (
@@ -38,16 +38,14 @@ export async function Header() {
                             <h1 className="text-2xl mb-2" >Genres</h1>
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>
                         </div>
-{
-    genreList.genres.map((g) => (
-        <DropdownMenuItem key={g.id} className="border-1 rounded-2xl">
-                            <Link href={'/genre/${g.id}'}>{g.name}</Link>
-                            <ChevronRight />
-                        </DropdownMenuItem>
-    ) ) 
-}
-                
-
+                        {
+                            genreList.genres.map((g) => (
+                                <DropdownMenuItem key={g.id} className="border-1 rounded-2xl">
+                                    <Link href={'/genre/${g.id}'}>{g.name}</Link>
+                                    <ChevronRight />
+                                </DropdownMenuItem>
+                            ))
+                        }
                     </DropdownMenuContent>
                 </DropdownMenu>
                 <Input className="w-[380px]" placeholder="Search" />

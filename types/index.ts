@@ -36,6 +36,6 @@ export type MovieDetails = {
   genres: { id: number; name: string }[];
 };
 export type CreditType = {
-  cast: object[];
-  crew: object[];
-}
+  cast: { credit_id: number; name: string }[];
+  crew: { credit_id: number; name: string }[];
+};

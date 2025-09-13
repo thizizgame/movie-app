@@ -11,11 +11,13 @@ import {
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { getGenreList } from "@/utils/get-genre";
-import { genreResponsiveType } from "@/types";
+import { genreType } from "@/types";
+
 export async function Header() {
 
-    const genreList: genreResponsiveType = await getGenreList();
-    console.log(genreList);
+    const genresResponse = await getGenreList();
+    console.log(genresResponse);
+    
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
             <div className=" text-indigo-700">
@@ -39,10 +41,11 @@ export async function Header() {
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>
                         </div>
                         {
-                            genreList.genres.map((g) => (
-                                <DropdownMenuItem key={g.id} className="border-1 rounded-2xl">
-                                    <Link href={'/genre/${g.id}'}>{g.name}</Link>
-                                    <ChevronRight />
+                            genresResponse.genres.map((genre:genreType) => (
+                                <DropdownMenuItem  className="border-1 rounded-2xl">
+                                    <Link className="flex items-center gap-1" key={genre.id} href={`/genre?id=${genre.id}`}>{genre.name}
+                                    <ChevronRight /></Link>
+                                    
                                 </DropdownMenuItem>
                             ))
                         }

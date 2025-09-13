@@ -1,38 +1,64 @@
-import Link from "next/link";
-import { getGenreList } from "@/utils/get-genre";
-import { ChevronRight } from "lucide-react";
-import { genreType } from "@/types";
+
 import { MovieCard } from "@/components/home";
-import { Button } from "@/components/ui/button";
+import { genreResponsiveType, genreType, movieResponseType } from "@/types";
+import { getGenreList, getMoviesByGenreId } from "@/utils/get-genre";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
-export default async function Page() {
-  const { genres } = await getGenreList();
 
-  return (
-    <main className="max-w-[1250px] m-auto flex gap-10">
-      <div>
-        <h1 className="text-2xl font-semibold mb-4">Genres</h1>
-        <ul className="w-[387px] flex flex-wrap gap-2 items-center">
-          {(genres).map((g: genreType) => (
-            <li key={g.id}>
-              <Button
-                className="flex items-center justify-between rounded-xl"
-              >
-                <span>{g.name}</span>
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="border-l-1 pl-10">
-        81 titles in “Animation”
-        <div className="flex flex-wrap">
-          {/* <MovieCard /> */}
-        </div>
+type GenrePageProps = {
+  searchParams: Promise<{ id: string }>;
+};
 
-      </div>
+const GenrePage = async ({ searchParams }: GenrePageProps) => {
+  const params = await searchParams;
+  const id = params.id;
 
-    </main>
+  const filteredMoviesResponse: movieResponseType = await getMoviesByGenreId(
+    id
   );
-}
+  const abc: genreResponsiveType = await getGenreList();
+  console.log("genres", abc.genres);
+  const currentGenre = abc.genres.find(g => String(g.id) === String(id));
+  const currentGenreName = currentGenre?.name ?? "All genres";
+  return (
+    <div className="w-[1250px] m-auto">
+      <h1 className="text-3xl pb-15 pt-5">Search Filter</h1>
+      <div className="flex">
+      <div>
+        <h1>Genres</h1>
+        <p className="py-5">See lists of movies by genre</p>
+        <div className="w-70 flex gap-2 flex-wrap text-[14px]">
+        {abc.genres.map((genre: genreType) => (
+
+          <Link className="border-1 py-1 px-1 rounded-2xl " key={genre.id} href={`/genre?id=${genre.id}`}>
+            <p className="flex items-center">
+              {genre.name}
+              <ChevronRight className="w-4 h-4"/>  
+            </p>
+          </Link>
+
+        ))}
+      </div>
+      </div>
+      
+      <div className="flex flex-wrap gap-3 border-l-1 pl-3">
+        <h1 className="w-full">
+            { (filteredMoviesResponse.results.length) } titles in “{currentGenreName}”
+          </h1>
+        {filteredMoviesResponse.results.slice(0, 10).map((movie) => (
+          <MovieCard
+            key={movie.id}
+            title={movie.title}
+            scores={movie.vote_average}
+            imageURL={movie.poster_path}
+          />
+        ))}
+      </div>
+    </div>
+    </div>
+    
+  );
+};
+
+export default GenrePage;

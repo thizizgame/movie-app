@@ -49,6 +49,7 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
         {filteredMoviesResponse.results.slice(0, 10).map((movie) => (
           <MovieCard
             key={movie.id}
+            id={movie.id}
             title={movie.title}
             scores={movie.vote_average}
             imageURL={movie.poster_path}

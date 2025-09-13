@@ -24,3 +24,18 @@ export type genreType = {
 export type genreResponsiveType = {
   genres: genreType[];
 };
+export type MovieDetails = {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  vote_average: number;
+  runtime: number | null;
+  release_date: string; // "YYYY-MM-DD"
+  genres: { id: number; name: string }[];
+};
+export type CreditType = {
+  cast: object[];
+  crew: object[];
+}

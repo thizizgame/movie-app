@@ -42,7 +42,7 @@ export async function Header() {
                         </div>
                         {
                             genresResponse.genres.map((genre:genreType) => (
-                                <DropdownMenuItem  className="border-1 rounded-2xl">
+                                <DropdownMenuItem key={genre.id} className="border-1 rounded-2xl">
                                     <Link className="flex items-center gap-1" key={genre.id} href={`/genre?id=${genre.id}`}>{genre.name}
                                     <ChevronRight /></Link>
                                     

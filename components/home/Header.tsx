@@ -51,7 +51,18 @@ export async function Header() {
                         }
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <Input className="w-[380px]" placeholder="Search" />
+                <DropdownMenu>
+                    <DropdownMenuTrigger>
+                    <Input className="w-[380px]" placeholder="Search"/>         
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="flex gap-2 flex-wrap w-[577px] p-[20px]">
+                        <div className="w-full border-b-1 mb-2">
+                            za hairtaishde har pzda mine
+                        </div>
+                        <Link href="/search">See all results for ""</Link>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+                
             </div>
             <ModeToggle />
 

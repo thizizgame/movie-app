@@ -11,7 +11,11 @@ export const MoviesContainer = ({ movies, title }: MoviesContainerProps) => {
    
   return (
     <div>
-      <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>
+      <div className="flex justify-between items-center pr-5">
+          <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>
+          <p>See more</p>
+      </div>
+      
       <div className="flex gap-6 m-auto flex-wrap ">
         {movies.slice(0, 10).map((movie) => (
           

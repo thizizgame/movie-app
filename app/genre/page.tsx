@@ -46,7 +46,7 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
         <h1 className="w-full">
             { (filteredMoviesResponse.results.length) } titles in “{currentGenreName}”
           </h1>
-        {filteredMoviesResponse.results.slice(0, 10).map((movie) => (
+        {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

@@ -19,8 +19,8 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
   const movieCredits: CreditType = await getCredits(id);
   const movieTrailer = await getTrailer(id);
   const similarMovies :movieResponseType = await getSimilarMovies(id);
-  console.log(movieCredits.cast);
-  console.log(movieCredits);
+  console.log("moviecredits.cast", movieCredits.cast);
+  console.log("moviecredits", movieCredits);
   console.log("trailer", movieTrailer);
   console.log("similar movies", similarMovies);
   return (
@@ -29,9 +29,6 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
        <iframe
        key={movieTrailer.id}
         src={`https://www.youtube-nocookie.com/embed/${movieTrailer.results[0].key}`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        loading="lazy"
         className="w-[950px] border-0 absolute top-19 left-75 h-107"
       />
       <div className="flex gap-2  border-b-1 pt-3 pb-3">

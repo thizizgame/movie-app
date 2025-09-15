@@ -13,7 +13,8 @@ export type MovieType = {
 
 export type movieResponseType = {
   page: number;
-  totalPages: number;
+  total_pages: number;
+  total_results:number;
   results: MovieType[];
 };
 

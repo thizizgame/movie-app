@@ -54,7 +54,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
                       </span>
                       <h2 className="flex items-center gap-2"><FaStar color="yellow"/>{movie.vote_average}</h2>
                       <h2 className="text-[14px]">{movie.overview}</h2>
-                      <h2 className="rounded-xl py-2 px-4 mt-5 w-32 bg-white text-black border-1">Watch Trailer</h2>
+                      <h2 className="rounded-xl py-2 px-4 mt-5 w-33 bg-white text-black border-1">Watch Trailer</h2>
                     </div>
 
                     <img className="rounded-xl w-screen h-[654px] bg-center bg-cover" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />

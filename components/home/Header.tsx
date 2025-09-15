@@ -18,6 +18,7 @@ export async function Header() {
     const genresResponse = await getGenreList();
     console.log(genresResponse);
     
+    
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
             <div className=" text-indigo-700">
@@ -43,7 +44,7 @@ export async function Header() {
                         {
                             genresResponse.genres.map((genre:genreType) => (
                                 <DropdownMenuItem key={genre.id} className="border-1 rounded-2xl">
-                                    <Link className="flex items-center gap-1" key={genre.id} href={`/genre?id=${genre.id}`}>{genre.name}
+                                    <Link className="flex items-center gap-1" key={genre.id} href={`/genre?id=${genre.id}&name=${genre.name}&page=1`}>{genre.name}
                                     <ChevronRight /></Link>
                                     
                                 </DropdownMenuItem>

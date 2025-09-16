@@ -1,9 +1,9 @@
 import { MovieCard } from "@/components/home";
 import { MovieDetails } from "@/components/home/MovieDetails";
-import { CreditType, movieResponseType, MovieType } from "@/types";
+import { TrailerDialog } from "@/components/home/trailerDialog";
+import { CreditType, genreType, movieResponseType, MovieType } from "@/types";
 import { getCredits, getMoviesByMovieId, getSimilarMovies, getTrailer } from "@/utils/get-movie-details";
-
-
+import { IoPlayOutline } from "react-icons/io5";
 type movieDetailsPageProps = {
   searchParams: Promise<{ id: string }>;
 };
@@ -20,18 +20,20 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
   const movieTrailer = await getTrailer(id);
   const similarMovies :movieResponseType = await getSimilarMovies(id);
   console.log("moviecredits.cast", movieCredits.cast);
-  console.log("moviecredits", movieCredits);
+  console.log("moviecredits", movieDetail);
   console.log("trailer", movieTrailer);
   console.log("similar movies", similarMovies);
   return (
     <div className="w-[1250px] m-auto relative">
-       <MovieDetails overview={movieDetail.overview} genreID={movieDetail.genre_ids} scores={movieDetail.vote_average} title={movieDetail.title} imageURL={movieDetail.backdrop_path} date={movieDetail.release_date}/>
-       <iframe
-       key={movieTrailer.id}
-        src={`https://www.youtube-nocookie.com/embed/${movieTrailer.results[0].key}`}
-        className="w-[950px] border-0 absolute top-19 left-75 h-107"
-      />
-      <div className="flex gap-2  border-b-1 pt-3 pb-3">
+      <div className="relative"><MovieDetails overview={movieDetail.overview} genres={movieDetail.genres} scores={movieDetail.vote_average} title={movieDetail.title} imageURL={movieDetail.backdrop_path} bigImage={movieDetail.poster_path} date={movieDetail.release_date}/></div>
+       
+       <div className="text-black absolute py-2 px-2 right-[4%] top-[35%] bg-white shadow-2xl border-1 rounded-2xl">
+
+        <TrailerDialog id={movieTrailer.id} key={movieTrailer.id} trailerLink={movieTrailer.results[0].key}/> 
+         
+       </div>
+                          
+      <div className="flex gap-2  border-b-1 pt-3 pb-3 ">
         <h2 className="font-bold">Director: </h2>
           {
             movieCredits.crew[0].name

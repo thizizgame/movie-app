@@ -8,17 +8,23 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, Search } from "lucide-react";
 import Link from "next/link";
 import { getGenreList } from "@/utils/get-genre";
 import { genreType } from "@/types";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { SearchBox } from "./SearchBox";
 
 export async function Header() {
 
     const genresResponse = await getGenreList();
     console.log(genresResponse);
-    
-    
+
+
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
             <div className=" text-indigo-700">
@@ -42,28 +48,22 @@ export async function Header() {
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>
                         </div>
                         {
-                            genresResponse.genres.map((genre:genreType) => (
+                            genresResponse.genres.map((genre: genreType) => (
                                 <DropdownMenuItem key={genre.id} className="border-1 rounded-2xl">
                                     <Link className="flex items-center gap-1" key={genre.id} href={`/genre?id=${genre.id}&name=${genre.name}&page=1`}>{genre.name}
-                                    <ChevronRight /></Link>
-                                    
+                                        <ChevronRight /></Link>
+
                                 </DropdownMenuItem>
                             ))
                         }
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <DropdownMenu>
-                    <DropdownMenuTrigger>
-                    <Input className="w-[380px]" placeholder="Search"/>         
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="flex gap-2 flex-wrap w-[577px] p-[20px]">
-                        <div className="w-full border-b-1 mb-2">
-                            za hairtaishde har pzda mine
-                        </div>
-                        <Link href="/search">See all results for ""</Link>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-                
+               
+
+                <SearchBox/>
+
+
+
             </div>
             <ModeToggle />
 

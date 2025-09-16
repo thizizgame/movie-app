@@ -23,7 +23,7 @@ export function TrailerDialog({id, trailerLink}:TrailerDialogProps) {
                                <iframe
        key={id}
         src={`https://www.youtube-nocookie.com/embed/${trailerLink}`}
-        className="w-full h-[720px] p-4"
+        className="w-full h-[720px]"
       />
                         </DialogDescription>
                     </DialogHeader>

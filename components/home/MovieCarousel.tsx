@@ -23,7 +23,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
-  
+
 
   React.useEffect(() => {
     if (!api) {
@@ -45,24 +45,24 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
           {movies.slice(0, 10).map((movie, index) => (
             <CarouselItem key={index}>
               <Link href={`/movie-details?id=${movie.id}`}>
-              <div className="p-1" >
-                <Card>
-                  <CardContent className="h-[606px] p-0 m-0 relative flex items-center text-white">
+                <div className="p-1" >
+                  <Card>
+                    <CardContent className="h-[606px] p-0 m-0 relative flex items-center text-white">
 
-                    <div className="w-101 rounded-xl absolute p-5 left-25 flex flex-col gap-3 ">
-                      <h2>Now Playing:</h2>
-                      <span className="text-3xl font-semibold ">
-                        {movie.title}
-                      </span>
-                      <h2 className="flex items-center gap-2"><FaStar color="yellow"/>{movie.vote_average}</h2>
-                      <h2 className="text-[14px]">{movie.overview}</h2>
-                      <TrailerDialog id={movie.id} trailerLink={"#"} />
-                    </div>
+                      <div className="w-101 rounded-xl absolute p-5 left-25 flex flex-col gap-3 ">
+                        <h2>Now Playing:</h2>
+                        <span className="text-3xl font-semibold ">
+                          {movie.title}
+                        </span>
+                        <h2 className="flex items-center gap-2"><FaStar color="yellow" />{movie.vote_average}</h2>
+                        <h2 className="text-[14px]">{movie.overview}</h2>
+                        <TrailerDialog id={movie.id} trailerLink={"#"} />
+                      </div>
 
-                    <img className="rounded-xl w-screen h-[654px] bg-center bg-cover" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
-                  </CardContent>
-                </Card>
-              </div>
+                      <img className="rounded-xl w-screen h-[654px] bg-center bg-cover" src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
+                    </CardContent>
+                  </Card>
+                </div>
               </Link>
             </CarouselItem>
           ))}

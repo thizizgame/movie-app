@@ -1,6 +1,5 @@
 import { MovieCarousel } from "@/components/home/MovieCarousel";
 import { MoviesContainer } from "@/components/home/moviesContainer";
-import { MovieCard } from "@/components/home/MovieCard";
 import { movieResponseType } from "@/types";
 import { getMoviesList } from "@/utils/get-data";
 
@@ -15,7 +14,7 @@ export default async function Home() {
 
   return (
     <div className="w-[1250px] m-auto">
-     
+
       <MovieCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer movies={upcomingMovies.results} title="Upcoming" />
       <MoviesContainer movies={popularMovies.results} title="Popular" />
@@ -23,3 +22,11 @@ export default async function Home() {
     </div>
   );
 }
+// 1. Home Page Carousel Watch trailer
+// 2. Movie Carousel iin auto slide hiih
+// 3. Searched Page iin Results-iig songoson Genre-r filterdeh
+// 4. Searched Page iin pagination
+// 5. Movie Details page watch traileriin absolute-g zasah
+// 6. Responsive hiih
+// 7. Page buriin skeleton hiih
+// 8. Design saijruulj bolno

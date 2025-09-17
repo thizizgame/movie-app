@@ -9,9 +9,8 @@ type MovieDetailsProps = {
     genres: genreType[],
     overview: string,
     bigImage: string,
-    
-}
 
+}
 export function MovieDetails({ title, scores, date, imageURL, overview, genres, bigImage }: MovieDetailsProps) {
 
     return (
@@ -25,21 +24,19 @@ export function MovieDetails({ title, scores, date, imageURL, overview, genres, 
                     <p>Rating</p><br />
                     <FaStar color="yellow" />
                     {scores}
-
                 </div>
             </div>
             <div className="mt-4 flex gap-3">
                 <img src={`https://image.tmdb.org/t/p/original${bigImage}`} className="w-80 h-120 overflow-hidden object-cover" />
-                <img src={`https://image.tmdb.org/t/p/original${imageURL}`} className="w-[920px] h-120 relative"/>
+                <img src={`https://image.tmdb.org/t/p/original${imageURL}`} className="w-[920px] h-120 relative" />
             </div>
-            
+
             <div className="mt-6">
                 <div className="flex gap-2 my-4">
                     {genres.map((genre) => (
                         <div key={genre.id} className="rounded-xl border-1 px-3 py-1">{genre.name}</div>
                     ))}
                 </div>
-
                 {overview}
             </div>
         </div>

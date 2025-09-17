@@ -25,21 +25,18 @@ export function Footer() {
                         <div className="flex items-center gap-3 mb-4">
                             <MdOutlineEmail />
                             <div>
-                            <p>Email: </p>
-                            <p>support@movieZ.com</p>
+                                <p>Email: </p>
+                                <p>support@movieZ.com</p>
                             </div>
-                            
                             <br />
                         </div>
                         <div className="flex items-center gap-3">
                             <FiPhone />
                             <div>
                                 <p>Phone: </p>
-                            <p>+976 (11) 123-4567</p>
+                                <p>+976 (11) 123-4567</p>
                             </div>
-                            
                         </div>
-
                     </div>
                     <div>
                         <p>Follow us </p><br />
@@ -48,6 +45,5 @@ export function Footer() {
                 </div>
             </div>
         </div>
-
     )
 }

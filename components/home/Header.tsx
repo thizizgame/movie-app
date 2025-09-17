@@ -1,7 +1,6 @@
 import { ModeToggle } from "@/components/home/ThemeToggler";
 import { Button } from "../ui/button";
 import { FiFilm } from "react-icons/fi";
-import { Input } from "@/components/ui/input"
 import {
     DropdownMenu,
     DropdownMenuItem,
@@ -12,19 +11,12 @@ import { ChevronDown, ChevronRight, Search } from "lucide-react";
 import Link from "next/link";
 import { getGenreList } from "@/utils/get-genre";
 import { genreType } from "@/types";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
 import { SearchBox } from "./SearchBox";
 
 export async function Header() {
 
     const genresResponse = await getGenreList();
     console.log(genresResponse);
-
-
     return (
         <div className="p-10 w-[1360px] m-auto flex justify-between">
             <div className=" text-indigo-700">
@@ -32,7 +24,6 @@ export async function Header() {
                     <FiFilm color="#4338CA" />
                     <p className="font-semibold">Movie Z</p>
                 </Link>
-
             </div>
             <div className="flex gap-5">
                 <DropdownMenu>
@@ -58,15 +49,9 @@ export async function Header() {
                         }
                     </DropdownMenuContent>
                 </DropdownMenu>
-               
-
-                <SearchBox/>
-
-
-
+                <SearchBox />
             </div>
             <ModeToggle />
-
         </div>
     )
 }

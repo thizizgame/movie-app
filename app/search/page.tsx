@@ -8,15 +8,17 @@ import Link from "next/link";
 
 
 type searchGenrePageProps = {
-  searchParams: Promise<{ id: string }>;
+  searchParams: Promise<{ value: string, id: string }>;
 };
 
 const SearchPage = async ({ searchParams }: searchGenrePageProps) => {
   const params = await searchParams;
+  const searchValue = params.value;
   const id = params.id;
+  
 
   const searchedMoviesResponse: movieResponseType = await getSearchedMovies(
-    id
+    searchValue
   );
   const abc: genreResponsiveType = await getGenreList();
   
@@ -26,9 +28,9 @@ const SearchPage = async ({ searchParams }: searchGenrePageProps) => {
       <div className="flex">
          <div className="flex flex-wrap gap-3 border-r-1">
         <h1 className="w-full">
-            { (searchedMoviesResponse.results.length) } results for “”
+            { (searchedMoviesResponse.total_results) } results for “{searchValue}”
           </h1>
-        {searchedMoviesResponse.results.map((movie) => (
+        {searchedMoviesResponse.results.slice(0, 12).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}

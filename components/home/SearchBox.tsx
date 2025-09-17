@@ -13,7 +13,8 @@ export const SearchBox = () => {
     const [searchValue, setSearchValue]= useState("");
     const [foundMovies, setFoundMovies] = useState<movieResponseType| null>(null);
     const [isOpen, setIsOpen] = useState(false);
-    const handleChange = async (e) => {
+
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
       setSearchValue(value);
       const foundData = await getSearchedMovies(value)
@@ -22,9 +23,7 @@ export const SearchBox = () => {
       }else{
         setIsOpen(false);
       }
-      
-      setFoundMovies(foundData);
-      
+      setFoundMovies(foundData);  
     }
 
   return (
@@ -33,15 +32,15 @@ export const SearchBox = () => {
                     <PopoverTrigger><Input className="w-[380px] relative" value={searchValue} onChange={handleChange} placeholder="Search"/></PopoverTrigger>
                     <PopoverContent className="w-120 absolute -left-47.5">
                       {foundMovies?.results.slice(0 , 5).map((movie)=>{
-                        return <div className="w-full border-b-1 py-3" key={movie.id}>
+                        return <div className="w-full border-b-1 py-3 mb-4" key={movie.id}>
                           <div className='flex gap-3 text-[14px]'>
-                              <img src={movie.poster_path} className='w-17 h-25'/>
+                              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='w-17 h-25'/>
                              <div className='flex flex-col justify-between'>
                               <div>
                                 <p className='w-full'>{movie.title}</p>
                               <p className='flex items-center gap-1'><FaStar color='yellow'/> {movie.vote_average}</p>
                               </div>
-                              <div className='flex flex-wrap justify-between items-center'>
+                              <div className='flex gap-45 items-center'>
                                 <p>{movie.release_date}</p>
                                 <Link className="flex gap-2 items-center" href={`/movie-details?id=${movie.id}`}>See more <ChevronRight/></Link>
                               </div>

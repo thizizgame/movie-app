@@ -1,4 +1,4 @@
-"use client"
+
 import {
     Dialog,
     DialogContent,
@@ -8,16 +8,16 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { IoPlayOutline } from "react-icons/io5";
-type TrailerDialogProps = {
+type DetailsDialogProps = {
     trailerLink: string,
-    id: string | number,
-    handleClick:(id:string | number)=>void
+    id: number,
+  
 }
-export function TrailerDialog({id,trailerLink, handleClick}:TrailerDialogProps) {
+export function DetailsDialog({id,trailerLink}:DetailsDialogProps) {
     return (
         <div>
             <Dialog>
-                <DialogTrigger onClick={()=>handleClick(id)} className="flex items-center gap-1"><IoPlayOutline/>Watch Trailer</DialogTrigger>
+                <DialogTrigger className="flex items-center gap-1"><IoPlayOutline/>Watch Trailer</DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle></DialogTitle>

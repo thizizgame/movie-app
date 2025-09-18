@@ -1,4 +1,5 @@
 import { MovieCard } from "@/components/home";
+import { DetailsDialog } from "@/components/home/detailsDialog";
 import { MovieDetails } from "@/components/home/MovieDetails";
 import { TrailerDialog } from "@/components/home/trailerDialog";
 import { CreditType, genreType, movieResponseType, MovieType } from "@/types";
@@ -15,7 +16,9 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
   const movieDetail: MovieType = await getMoviesByMovieId(
     id
   );
-
+  const noReturn = () => {
+    console.log("noReturn");
+  }
   const movieCredits: CreditType = await getCredits(id);
   const movieTrailer = await getTrailer(id);
   const similarMovies: movieResponseType = await getSimilarMovies(id);
@@ -29,7 +32,7 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
 
       <div className="text-black absolute py-2 px-2 right-[4%] top-[35%] bg-white shadow-2xl border-1 rounded-2xl">
 
-        <TrailerDialog id={movieTrailer.id} key={movieTrailer.id} trailerLink={movieTrailer.results[0].key} />
+      <DetailsDialog key={movieDetail.id} id={movieDetail.id} trailerLink={movieTrailer.results[0].key}/>
 
       </div>
 

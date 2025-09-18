@@ -1,24 +1,31 @@
 
 import { MovieCard } from "@/components/home";
 import { genreResponsiveType, genreType, movieResponseType } from "@/types";
-import { getSearchedMovies } from "@/utils/get-data";
+import { getSearchedMoviesServer } from "@/utils/get-data";
 import { getGenreList } from "@/utils/get-genre";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 
 type searchGenrePageProps = {
-  searchParams: Promise<{ value: string, id: string }>;
+  searchParams: Promise<{ value: string }>;
 };
 
 const SearchPage = async ({ searchParams }: searchGenrePageProps) => {
   const params = await searchParams;
   const searchValue = params.value;
-  const id = params.id;
-  
-
-  const searchedMoviesResponse: movieResponseType = await getSearchedMovies(
-    searchValue
+  let page:string = "1";
+  const searchedMoviesResponse: movieResponseType = await getSearchedMoviesServer(
+    searchValue, page
   );
   const abc: genreResponsiveType = await getGenreList();
   
@@ -39,6 +46,56 @@ const SearchPage = async ({ searchParams }: searchGenrePageProps) => {
             imageURL={movie.poster_path}
           />
         ))}
+         <div className="mt-6 m-auto">
+            <Pagination>
+              <PaginationContent>
+                {/* Previous */}
+                {searchedMoviesResponse.page > 1 && (
+                  <PaginationItem>
+                    <PaginationPrevious
+                      href={`search?query=${searchValue}&page=${searchedMoviesResponse.page - 1}`}
+                    />
+                  </PaginationItem>
+                )}
+
+                {/* Dynamic number buttons */}
+                {Array.from({ length: 3 }, (_, i) => {
+                  // эхлэх утга: page=1 үед 1; page>=2 үед (currentPage - 1)
+                  const startPage =
+                    searchedMoviesResponse.page === 1
+                      ? 1
+                      : searchedMoviesResponse.page - 1
+
+                  const pageNumber = startPage + i
+
+                  return (
+                    <PaginationItem key={pageNumber}>
+                      <PaginationLink
+                        href={`search?value=${searchValue}&page=${pageNumber}`}
+                        isActive={pageNumber === searchedMoviesResponse.page}
+                      >
+                        {pageNumber}
+                      </PaginationLink>
+                    </PaginationItem>
+                  )
+                })}
+
+                {/* Ellipsis */}
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+
+                {/* Next */}
+                {searchedMoviesResponse.page < searchedMoviesResponse.total_pages && (
+                  <PaginationItem>
+                    <PaginationNext
+                      href={`search?value=${searchValue}&page=${searchedMoviesResponse.page + 1}`}
+                    />
+                  </PaginationItem>
+                )}
+              </PaginationContent>
+            </Pagination>
+          </div>
       </div>
       <div className="pl-3">
         <h1>Genres</h1>

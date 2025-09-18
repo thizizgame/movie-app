@@ -28,7 +28,7 @@ export const getCredits = async (movieId: string) => {
   return data;
 };
 
-export const getTrailer = async (movieId: string) => {
+export const getTrailer = async (movieId: string | number) => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
     {

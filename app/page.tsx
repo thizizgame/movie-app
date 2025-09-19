@@ -22,7 +22,7 @@ export default async function Home() {
     </div>
   );
 }
-// 1. Home Page Carousel Watch trailer
+// 1. 
 // 2. Movie Carousel iin auto slide hiih
 // 3. Searched Page iin Results-iig songoson Genre-r filterdeh
 // 4. Searched Page iin pagination

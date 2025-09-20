@@ -22,11 +22,11 @@ export default async function Home() {
     </div>
   );
 }
-// 1. 
-// 2. Movie Carousel iin auto slide hiih
+// 1.
+// 2.
 // 3. Searched Page iin Results-iig songoson Genre-r filterdeh
-// 4. Searched Page iin pagination
-// 5. Movie Details page watch traileriin absolute-g zasah
+// 4.
+// 5.
 // 6. Responsive hiih
 // 7. Page buriin skeleton hiih
-// 8. Design saijruulj bolno
+// 8. 

@@ -1,8 +1,7 @@
 import { MovieCard } from "@/components/home";
 import { DetailsDialog } from "@/components/home/detailsDialog";
 import { MovieDetails } from "@/components/home/MovieDetails";
-import { TrailerDialog } from "@/components/home/trailerDialog";
-import { CreditType, genreType, movieResponseType, MovieType } from "@/types";
+import { CreditType, movieResponseType, MovieType } from "@/types";
 import { getCredits, getMoviesByMovieId, getSimilarMovies, getTrailer } from "@/utils/get-movie-details";
 
 type movieDetailsPageProps = {
@@ -32,7 +31,7 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
 
       <div className="text-black absolute py-2 px-2 right-[4%] top-[35%] bg-white shadow-2xl border-1 rounded-2xl">
 
-      <DetailsDialog key={movieDetail.id} id={movieDetail.id} trailerLink={movieTrailer.results[0].key}/>
+        <DetailsDialog key={movieDetail.id} id={movieDetail.id} trailerLink={movieTrailer.results[0].key} />
 
       </div>
 

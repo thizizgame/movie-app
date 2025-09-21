@@ -1,7 +1,7 @@
 
 import { MovieCard } from "@/components/home";
 import { genreResponsiveType, genreType, movieResponseType, MovieType } from "@/types";
-import { getSearchedMovies, getSearchedMoviesServer } from "@/utils/get-data";
+import { getSearchedMovies } from "@/utils/get-data";
 import { getGenreList } from "@/utils/get-genre";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -28,7 +28,7 @@ const SearchPage = async ({ searchParams }: searchGenrePageProps) => {
       <div className="flex">
         <div className="flex flex-wrap gap-3 border-r-1">
           <h1 className="w-full">
-            {(searchedMoviesResponse.total_results)} results for “{searchValue}”
+            {(searchedMoviesResponse.total_results)} results for {searchValue}
           </h1>
           {filteredSearchedMovies.slice(0, 12).map((movie) => (
             <MovieCard

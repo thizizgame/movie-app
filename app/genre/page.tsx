@@ -56,7 +56,7 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
 
         <div className="flex flex-wrap gap-3 border-l-1 pl-3">
           <h1 className="w-full">
-            {(filteredMoviesResponse.total_results)} titles in “{name}”
+            {(filteredMoviesResponse.total_results)} titles in {name}
           </h1>
           {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
             <MovieCard

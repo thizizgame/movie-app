@@ -24,7 +24,7 @@ export default async function Home() {
 }
 // 1.
 // 2.
-// 3. Searched Page iin Results-iig songoson Genre-r filterdeh
+// 3.
 // 4.
 // 5.
 // 6. Responsive hiih

@@ -50,8 +50,7 @@ export const SearchBox = () => {
             </div>
           }
           )}
-
-          <Link href={`/search?value=${searchValue}`}>See all results for "{searchValue}"</Link></PopoverContent>
+          <Link href={`/search?value=${searchValue}`}>See all results for `{searchValue}`</Link></PopoverContent>
       </Popover>
     </div>
   )

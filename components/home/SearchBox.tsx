@@ -28,9 +28,9 @@ export const SearchBox = () => {
 
   return (
     <div>
-      <Popover open={isOpen}>
+      <Popover open={isOpen} onOpenChange={() => { setIsOpen(false) }}>
         <PopoverTrigger><Input className="w-[380px] relative" value={searchValue} onChange={handleChange} placeholder="Search" /></PopoverTrigger>
-        <PopoverContent className="w-120 absolute -left-47.5">
+        <PopoverContent onOpenAutoFocus={(e) => e.preventDefault()} className="w-120 absolute -left-47.5">
           {foundMovies?.results.slice(0, 5).map((movie) => {
             return <div className="w-full border-b-1 py-3 mb-4" key={movie.id}>
               <div className='flex gap-3 text-[14px]'>

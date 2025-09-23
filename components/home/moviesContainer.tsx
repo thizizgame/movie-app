@@ -10,7 +10,7 @@ type MoviesContainerProps = {
 };
 
 export const MoviesContainer = ({ movies, title, angilal }: MoviesContainerProps) => {
-   
+
   return (
     <div>
       <div className="flex  items-center pr-5">
@@ -19,17 +19,17 @@ export const MoviesContainer = ({ movies, title, angilal }: MoviesContainerProps
           <p>See more</p>
         </Link>
       </div>
-      
+
       <div className="flex gap-6 m-auto flex-wrap ">
         {movies.slice(0, 10).map((movie) => (
-          
+
           <MovieCard
             key={movie.id}
             id={movie.id}
             title={movie.title}
             scores={movie.vote_average}
             imageURL={movie.poster_path}
-          />  
+          />
         ))}
       </div>
     </div>

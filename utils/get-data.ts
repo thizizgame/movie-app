@@ -13,6 +13,7 @@ export const getMoviesList = async (listName: string) => {
   const data = await res.json();
   return data;
 };
+
 export const getSearchedMovies = async (searchValue: string) => {
   const res = await fetch(
     `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=${1}`,

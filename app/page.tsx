@@ -16,9 +16,9 @@ export default async function HomePage() {
     <div className="w-[1250px] m-auto">
 
       <MovieCarousel movies={nowPlayingMovies.results} />
-      <MoviesContainer movies={upcomingMovies.results} title="Upcoming" />
-      <MoviesContainer movies={popularMovies.results} title="Popular" />
-      <MoviesContainer movies={topRatedMovies.results} title="Top Rated" />
+      <MoviesContainer movies={upcomingMovies.results} title="Upcoming" angilal="upcoming" />
+      <MoviesContainer movies={popularMovies.results} title="Popular" angilal="popular" />
+      <MoviesContainer movies={topRatedMovies.results} title="Top Rated" angilal="toprated"/>
     </div>
   );
 }

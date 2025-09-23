@@ -3,6 +3,7 @@ import { DetailsDialog } from "@/components/home/detailsDialog";
 import { MovieDetails } from "@/components/home/MovieDetails";
 import { CreditType, movieResponseType, MovieType } from "@/types";
 import { getCredits, getMoviesByMovieId, getSimilarMovies, getTrailer } from "@/utils/get-movie-details";
+import Link from "next/link";
 
 type movieDetailsPageProps = {
   searchParams: Promise<{ id: string }>;
@@ -55,7 +56,7 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
       </div>
       <div className="flex justify-between py-6">
         <div className="text-2xl font-bold">More Like this</div>
-        <div>See More</div>
+        <Link href={`similar?id=${movieDetail.id}`}>See more</Link>
       </div>
       <div className="flex justify-between">
         {

@@ -1,19 +1,23 @@
 import { MovieType } from "@/types";
 import { MovieCard } from "./MovieCard";
+import Link from "next/link";
 
 
 type MoviesContainerProps = {
   movies: MovieType[];
   title: string;
+  angilal: string;
 };
 
-export const MoviesContainer = ({ movies, title }: MoviesContainerProps) => {
+export const MoviesContainer = ({ movies, title, angilal }: MoviesContainerProps) => {
    
   return (
     <div>
-      <div className="flex justify-between items-center pr-5">
+      <div className="flex  items-center pr-5">
+        <Link className="flex justify-between items-center w-full" href={`${angilal}`}>
           <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>
           <p>See more</p>
+        </Link>
       </div>
       
       <div className="flex gap-6 m-auto flex-wrap ">

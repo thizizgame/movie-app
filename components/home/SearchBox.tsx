@@ -17,7 +17,7 @@ export const SearchBox = () => {
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchValue(value);
-    const foundData = await getSearchedMovies(value)
+    const foundData = await getSearchedMovies(value, "1")
     if (value.length > 0) {
       setIsOpen(true);
     } else {
@@ -50,7 +50,7 @@ export const SearchBox = () => {
             </div>
           }
           )}
-          <Link href={`/search?value=${searchValue}`}>See all results for &quot;{searchValue}&quot;</Link></PopoverContent>
+          <Link href={`/search?value=${searchValue}&page=1`}>See all results for &quot;{searchValue}&quot;</Link></PopoverContent>
       </Popover>
     </div>
   )

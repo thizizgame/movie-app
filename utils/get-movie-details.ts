@@ -44,9 +44,9 @@ export const getTrailer = async (movieId: string | number) => {
 };
 
 
-export const getSimilarMovies = async (movieId: string) => {
+export const getSimilarMovies = async (movieId: string, page: string) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=${page}`,
     {
       method: "GET",
       headers: {

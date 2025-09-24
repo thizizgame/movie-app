@@ -73,7 +73,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
                 <Card>
                   <CardContent className="xl:h-[606px] lg:h-[506px] md:h-[426px] sm:h-[406px] p-0 m-0 relative flex items-center text-white">
                     <div className="w-101 rounded-xl absolute p-5 left-25 flex flex-col gap-3">
-                      <h2>Now Playing:</h2>
+                      <Link href={`seemore?name=now_playing&page=1`}><h2>Now Playing:</h2></Link>
                       <span className="text-3xl font-semibold">
                         <Link href={`/movie-details?id=${movie.id}`}>
                           {movie.title}

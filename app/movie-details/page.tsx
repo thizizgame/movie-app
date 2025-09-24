@@ -6,12 +6,13 @@ import { getCredits, getMoviesByMovieId, getSimilarMovies, getTrailer } from "@/
 import Link from "next/link";
 
 type movieDetailsPageProps = {
-  searchParams: Promise<{ id: string }>;
+  searchParams: Promise<{ id: string, page: string }>;
 };
 
 const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
   const params = await searchParams;
   const id = params.id;
+
 
   const movieDetail: MovieType = await getMoviesByMovieId(
     id
@@ -21,7 +22,7 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
   }
   const movieCredits: CreditType = await getCredits(id);
   const movieTrailer = await getTrailer(id);
-  const similarMovies: movieResponseType = await getSimilarMovies(id);
+  const similarMovies: movieResponseType = await getSimilarMovies(id, "1");
   console.log("moviecredits.cast", movieCredits.cast);
   console.log("moviecredits", movieDetail);
   console.log("trailer", movieTrailer);
@@ -56,7 +57,7 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
       </div>
       <div className="flex justify-between py-6">
         <div className="text-2xl font-bold">More Like this</div>
-        <Link href={`seemore?name=${movieDetail.id}`}>See more</Link>
+        <Link href={`seemore?name=${movieDetail.id}&page=1`}>See more</Link>
       </div>
       <div className="flex justify-between">
         {

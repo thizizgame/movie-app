@@ -4,7 +4,7 @@ import { FiPhone } from "react-icons/fi";
 export function Footer() {
     return (
         <div className="bg-indigo-700 mt-15">
-            <div className="flex w-[1360px] text-white p-[40px] m-auto mt-6 justify-between">
+            <div className="flex xl:w-[1280px] lg:w-[1024px] md:w-[768px] sm:w-[640px] text-white p-[40px] m-auto mt-6 justify-between">
                 <div className="flex gap-2">
 
                     <div>

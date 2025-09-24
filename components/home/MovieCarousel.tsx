@@ -71,7 +71,7 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
             <CarouselItem key={index}>
               <div className="p-1">
                 <Card>
-                  <CardContent className="h-[606px] p-0 m-0 relative flex items-center text-white">
+                  <CardContent className="xl:h-[606px] lg:h-[506px] md:h-[426px] sm:h-[406px] p-0 m-0 relative flex items-center text-white">
                     <div className="w-101 rounded-xl absolute p-5 left-25 flex flex-col gap-3">
                       <h2>Now Playing:</h2>
                       <span className="text-3xl font-semibold">
@@ -107,12 +107,12 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
       </Carousel>
 
       {/* ⬇️ ЖИЖИГ ЗАСВАР: сумнуудын доорх dots-ын тоог динамик болгов */}
-      <div className="flex gap-2 justify-center -mt-15 left-[45%] absolute">
+      <div className="flex gap-2 justify-center -mt-15 lg:left-[40%] md:left-[39%] sm:left-[40%] xl:left-[45%] absolute">
         {Array.from({ length: count || 0 }).map((_, index) => (
           <div
             onClick={() => api?.scrollTo(index)}
             key={index}
-            className={`rounded-full size-4 ${index + 1 === current ? "bg-gray-300" : "bg-gray-600"
+            className={`rounded-full xl:size-4 md:size-2.5 lg:size-3 sm:size-2 ${index + 1 === current ? "bg-gray-300" : "bg-gray-600"
               }`}
           />
         ))}

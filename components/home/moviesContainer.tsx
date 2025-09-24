@@ -13,14 +13,14 @@ export const MoviesContainer = ({ movies, title, angilal }: MoviesContainerProps
 
   return (
     <div>
-      <div className="flex  items-center pr-5">
-        <Link className="flex justify-between items-center w-full" href={`${angilal}`}>
+      <div className="flex items-center pr-5 ">
+        <Link className="flex justify-between items-center w-full md:justify-between sm:justify-around" href={`${angilal}`}>
           <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>
           <p>See more</p>
         </Link>
       </div>
 
-      <div className="flex gap-6 m-auto flex-wrap ">
+      <div className="flex gap-6 m-auto flex-wrap justify-center">
         {movies.slice(0, 10).map((movie) => (
 
           <MovieCard

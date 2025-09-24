@@ -13,12 +13,12 @@ export default async function HomePage() {
   );
 
   return (
-    <div className="w-[1250px] m-auto">
+    <div className="xl:w-[1250px] m-auto lg:w-[1024px] md:w-[768px] sm:w-[640px]">
 
       <MovieCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer movies={upcomingMovies.results} title="Upcoming" angilal="upcoming" />
       <MoviesContainer movies={popularMovies.results} title="Popular" angilal="popular" />
-      <MoviesContainer movies={topRatedMovies.results} title="Top Rated" angilal="toprated"/>
+      <MoviesContainer movies={topRatedMovies.results} title="Top Rated" angilal="toprated" />
     </div>
   );
 }

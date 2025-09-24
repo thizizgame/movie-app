@@ -18,7 +18,7 @@ export async function Header() {
     const genresResponse = await getGenreList();
     console.log(genresResponse);
     return (
-        <div className="p-10 w-[1360px] m-auto flex justify-between">
+        <div className="p-10 lg:w-[1024px] md:w-[768px] sm:w-[640px] xl:w-[1280px] m-auto flex justify-between">
             <div className=" text-indigo-700">
                 <Link className="flex gap-1 items-center" href="/">
                     <FiFilm color="#4338CA" />
@@ -33,7 +33,7 @@ export async function Header() {
                             Genre
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="flex gap-2 flex-wrap w-[577px] p-[20px]">
+                    <DropdownMenuContent align="start" className="flex gap-2 flex-wrap xl:w-[577px] md:w-[457px] sm:w-[407px] p-[20px]">
                         <div className="w-full border-b-1 mb-2">
                             <h1 className="text-2xl mb-2" >Genres</h1>
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>

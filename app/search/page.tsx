@@ -23,7 +23,7 @@ const SearchPage = async ({ searchParams }: searchGenrePageProps) => {
     searchedMoviesResponse.results.filter((movie) => movie.genre_ids.toString().includes(selectedGenreID))
     : searchedMoviesResponse.results;
   return (
-    <div className="w-[1250px] m-auto">
+    <div className="xl:w-[1250px] lg:w-[1024px] md:w-[768px] sm:w-[640px] m-auto">
       <h1 className="text-3xl pb-15 pt-5">Search Filter</h1>
       <div className="flex">
         <div className="flex flex-wrap gap-3 border-r-1">

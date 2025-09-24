@@ -56,7 +56,7 @@ const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
       </div>
       <div className="flex justify-between py-6">
         <div className="text-2xl font-bold">More Like this</div>
-        <Link href={`similar?id=${movieDetail.id}`}>See more</Link>
+        <Link href={`seemore?name=${movieDetail.id}`}>See more</Link>
       </div>
       <div className="flex justify-between">
         {

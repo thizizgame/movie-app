@@ -8,7 +8,18 @@ import Link from "next/link";
 type movieDetailsPageProps = {
   searchParams: Promise<{ id: string, page: string }>;
 };
+export const generateMetadata = async ({ searchParams }: movieDetailsPageProps) => {
+  const params = await searchParams;
+  const id = params.id;
 
+
+  const movieDetail: MovieType = await getMoviesByMovieId(
+    id
+  );
+  return {
+    title: `Movie Z | ${movieDetail.title}`,
+  }
+}
 const movieDetailsPage = async ({ searchParams }: movieDetailsPageProps) => {
   const params = await searchParams;
   const id = params.id;

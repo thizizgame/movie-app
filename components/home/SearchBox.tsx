@@ -29,7 +29,7 @@ export const SearchBox = () => {
   return (
     <div>
       <Popover open={isOpen} onOpenChange={() => { setIsOpen(false) }}>
-        <PopoverTrigger><Input className="xl:w-[380px] md:w-[280px] sm:w-[250px] relative" value={searchValue} onChange={handleChange} placeholder="Search" /></PopoverTrigger>
+        <PopoverTrigger><Input className="xl:w-[380px] md:w-[280px] sm:w-[250px] max-[480px]:w-[100px] relative" value={searchValue} onChange={handleChange} placeholder="Search" /></PopoverTrigger>
         <PopoverContent onOpenAutoFocus={(e) => e.preventDefault()} className="xl:w-120 md:w-100 sm:w-[90] md:-left-67.5 sm:-left-77.5 absolute -left-47.5">
           {foundMovies?.results.slice(0, 5).map((movie) => {
             return <div className="w-full border-b-1 py-3 mb-4" key={movie.id}>

@@ -15,7 +15,7 @@ export const MoviesContainer = ({ movies, title, angilal }: MoviesContainerProps
     <div>
       <div className="flex items-center pr-5 ">
         <Link className="flex justify-between items-center w-full md:justify-between sm:justify-around" href={`seemore?name=${angilal}&page=1`}>
-          <h2 className="pt-6 pb-6 text-4xl font-semibold">{title}</h2>
+          <h2 className="pt-6 pb-6 xl:text-4xl font-semibold min-[1024px]:text-3xl min-[640px]:text-2xl">{title}</h2>
           <p>See more</p>
         </Link>
       </div>

@@ -33,7 +33,7 @@ export async function Header() {
                             Genre
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="flex gap-2 flex-wrap xl:w-[577px] md:w-[457px] sm:w-[407px] p-[20px]">
+                    <DropdownMenuContent align="start" className="flex gap-2 flex-wrap xl:w-[577px] lg:w-[457px] md:w-[407px] sm:w-[357px] max-[640px]:w-[307px] p-[20px]">
                         <div className="w-full border-b-1 mb-2">
                             <h1 className="text-2xl mb-2" >Genres</h1>
                             <h2 className="text-l mb-3">See lists of movies by genre</h2>
